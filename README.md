@@ -22,7 +22,6 @@ TODO
 TODO
 
 ## Building and testing
-This repo include `fastpbkdf2` as a submodule.
 
 TODO
 
