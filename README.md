@@ -22,18 +22,18 @@ will cause a panic.
 `go test -bench .` will compare performance.  A typical output is:
 
 ```
-$ go test -bench . -benchtime 10s
-testing: warning: no tests to run
+$ go test -bench . -benchtime 3s
 PASS
-Benchmark_fastpbkdf2_SHA1      100   202401130 ns/op
-Benchmark_std_SHA1        20   980523550 ns/op
-Benchmark_fastpbkdf2_SHA256       50   539950307 ns/op
-Benchmark_std_SHA256         5  3060094011 ns/op
-Benchmark_fastpbkdf2_SHA512       50   689964923 ns/op
-Benchmark_std_SHA512         5  4124467480 ns/op
+Benchmark_fastpbkdf2_SHA1       20   196906583 ns/op
+Benchmark_std_SHA1         5   968360473 ns/op
+Benchmark_fastpbkdf2_SHA256       10   525602930 ns/op
+Benchmark_std_SHA256         2  2816165015 ns/op
+Benchmark_fastpbkdf2_SHA512       10   662370439 ns/op
+Benchmark_std_SHA512         1  3979382464 ns/op
+ok    fastpbkdf2  42.101s
 ```
 
-So that's around 4.85x, 5.66x and 5.98x faster, respectively.
+So that's around 4.91x, 5.35x and 6.01x faster, for SHA1, SHA256 and SHA512 respectively.
 
 ## Building and testing
 

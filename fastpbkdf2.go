@@ -1,7 +1,7 @@
 package fastpbkdf2
 
 /*
-#cgo CFLAGS: -std=c99
+#cgo CFLAGS: -std=c99 -O3
 #cgo LDFLAGS: -lcrypto
 #include "fastpbkdf2.h"
 */
