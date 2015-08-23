@@ -1,0 +1,3 @@
+[submodule "fastpbkdf2"]
+	path = fastpbkdf2
+	url = https://github.com/ctz/fastpbkdf2.git
