@@ -13,7 +13,7 @@ For your program which does
 ```go
 import "golang.org/x/crypto/pbkdf2"
 
-(... uses pbkdf2.Key ...
+/* ... uses pbkdf2.Key() ... */
 ```
 
 Replace that import with:
