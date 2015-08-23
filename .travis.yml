@@ -1,0 +1,8 @@
+language: go
+
+install:
+ - go get -t fastpbkdf2
+
+script:
+ - go test -bench . -benchtime 10s
+
