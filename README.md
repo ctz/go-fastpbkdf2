@@ -6,6 +6,25 @@ but outperforms it by a decent amount.
 
 [![Build Status](https://travis-ci.org/ctz/go-fastpbkdf2.svg)](https://travis-ci.org/ctz/go-fastpbkdf2)
 
+## Instant gratification
+
+For your program which does
+
+```go
+import "golang.org/x/crypto/pbkdf2"
+
+(... uses pbkdf2.Key ...
+```
+
+Replace that import with:
+
+```go
+import pbkdf2 "github.com/ctz/go-fastpbkdf2"
+```
+
+Then re-run `go get` and rebuild.  You should require no other code changes
+(please file a bug if not!)
+
 ## Interface
 
 ```go
