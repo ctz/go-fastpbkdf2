@@ -1,8 +1,9 @@
 package fastpbkdf2
 
 /*
-#cgo LDFLAGS: -L./fastpbkdf2/ -lfastpbkdf2 -lcrypto
-#include "fastpbkdf2/fastpbkdf2.h"
+#cgo CFLAGS: -std=c99
+#cgo LDFLAGS: -lcrypto
+#include "fastpbkdf2.h"
 */
 import "C"
 
