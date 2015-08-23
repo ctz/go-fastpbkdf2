@@ -10,6 +10,8 @@ import (
 	"testing"
 )
 
+import stdpbkdf2 "golang.org/x/crypto/pbkdf2"
+
 func check(t *testing.T, hash func() hash.Hash, hexPassword, hexSalt string, iterations int, hexAnswer string) {
 	password, _ := hex.DecodeString(hexPassword)
 	salt, _ := hex.DecodeString(hexSalt)
@@ -48,4 +50,43 @@ func TestSHA512(t *testing.T) {
 	check(t, sha512.New, "70617373776f7264", "73616c74", 2, "e1d9c16aa681708a45f5c7c4e215ceb66e011a2e9f0040713f18aefdb866d53c")
 	check(t, sha512.New, "70617373776f7264", "73616c74", 4096, "d197b1b33db0143e018b12f3d1d1479e6cdebdcc97c5c0f87f6902e072f457b5")
 	check(t, sha512.New, "70617373776f726450415353574f524470617373776f7264", "73616c7453414c5473616c7453414c5473616c7453414c5473616c7453414c5473616c74", 1, "6e23f27638084b0f7ea1734e0d9841f55dd29ea60a834466f3396bac801fac1eeb63802f03a0b4acd7603e3699c8b74437be83ff01ad7f55dac1ef60f4d56480c35ee68fd52c6936")
+}
+
+var benchmarkIterations = 512 * 1024
+
+func Benchmark_fastpbkdf2_SHA1(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Key([]byte("password"), []byte("salt"), benchmarkIterations, 20, sha1.New)
+	}
+}
+
+func Benchmark_std_SHA1(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		stdpbkdf2.Key([]byte("password"), []byte("salt"), benchmarkIterations, 20, sha1.New)
+	}
+}
+
+
+func Benchmark_fastpbkdf2_SHA256(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Key([]byte("password"), []byte("salt"), benchmarkIterations, 32, sha256.New)
+	}
+}
+
+func Benchmark_std_SHA256(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		stdpbkdf2.Key([]byte("password"), []byte("salt"), benchmarkIterations, 32, sha256.New)
+	}
+}
+
+func Benchmark_fastpbkdf2_SHA512(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Key([]byte("password"), []byte("salt"), benchmarkIterations, 64, sha512.New)
+	}
+}
+
+func Benchmark_std_SHA512(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		stdpbkdf2.Key([]byte("password"), []byte("salt"), benchmarkIterations, 64, sha512.New)
+	}
 }
