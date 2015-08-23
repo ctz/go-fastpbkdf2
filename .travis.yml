@@ -1,7 +1,7 @@
 language: go
 
 install:
- - go get -t src/github.com/ctz/go-fastpbkdf2
+ - go get
 
 script:
  - go test -bench . -benchtime 10s
